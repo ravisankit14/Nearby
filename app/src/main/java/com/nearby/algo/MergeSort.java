@@ -1,14 +1,13 @@
 package com.nearby.algo;
 
-import java.util.List;
 
 public class MergeSort {
 	
-	public static void sort(int[] inputArray){
+	public static void sort(String[] inputArray){
 		sort(inputArray, 0, inputArray.length-1);
 	}
 	
-	public static void sort(int[] inputArray,int start, int end){
+	public static void sort(String[] inputArray,int start, int end){
 		if(end <= start){
 			return; // we are done traversing the array
 		}
@@ -19,14 +18,14 @@ public class MergeSort {
 		merge(inputArray, start, mid, end);
 	}
 	
-	private static void merge(int[] inputArray, int start, int mid, int end){
-		int tempArray[] = new int[end - start + 1];
+	private static void merge(String[] inputArray, int start, int mid, int end){
+		String tempArray[] = new String[end - start + 1];
 		int leftSlot = start;
 		int rightSlot = mid+1;
 		int k=0;
 		
  		while(leftSlot <= mid && rightSlot <= end){
-			if(inputArray[leftSlot] < inputArray[rightSlot]){
+			if(Integer.parseInt(inputArray[leftSlot]) < Integer.parseInt(inputArray[rightSlot])){
 				tempArray[k] = inputArray[leftSlot];
 				leftSlot = leftSlot+1;
 			}else{
