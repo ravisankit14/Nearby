@@ -27,6 +27,7 @@ public class ItemFragment extends Fragment {
     private MyItemRecyclerViewAdapter adapter;
 
     private List<Nearby> nearbyList;
+    private String flag = "0";
 
     public ItemFragment() {
     }
@@ -35,7 +36,7 @@ public class ItemFragment extends Fragment {
 
         this.nearbyList = nearbyList2;
 
-        adapter = new MyItemRecyclerViewAdapter(getActivity(),nearbyList,mItemListener,"0");
+        adapter = new MyItemRecyclerViewAdapter(getActivity(),nearbyList,mItemListener, flag);
         mItemList.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
@@ -44,6 +45,10 @@ public class ItemFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         nearbyList = new ArrayList<>();
+
+        if(savedInstanceState != null){
+            nearbyList = savedInstanceState.getParcelableArrayList(KEY);
+        }
     }
 
     @Override
@@ -66,11 +71,11 @@ public class ItemFragment extends Fragment {
         Bundle bundle = this.getArguments();
         if(bundle != null){
             nearbyList = bundle.getParcelableArrayList("nearby_list2");
-
-            adapter = new MyItemRecyclerViewAdapter(getActivity(),nearbyList,mItemListener,"1");
-            mItemList.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+            flag = "1";
         }
+        adapter = new MyItemRecyclerViewAdapter(getActivity(),nearbyList,mItemListener,flag);
+        mItemList.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     @Override

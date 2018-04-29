@@ -42,7 +42,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mItem = mValues.get(position);
 
         holder.mLandmark.setText(mValues.get(position).getLandmark());
-        holder.mLatLng.setText(mValues.get(position).getLat() +"," + mValues.get(position).getLng());
+        holder.mLatLng.setText(mValues.get(position).getLat() +" , " + mValues.get(position).getLng());
 
         if(mFlag.equals("1")){
             holder.mDelete.setVisibility(View.GONE);
