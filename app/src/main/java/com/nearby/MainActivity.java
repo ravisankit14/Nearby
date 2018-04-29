@@ -13,7 +13,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentSearchL
     private FragmentManager fm;
     private SearchFragment searchFragment;
     private ItemFragment itemFragment;
-    private Button nearMeButton, animateOnMap;
     FetchLocation fetchLocation;
 
     private List<Nearby> nearbyList;
@@ -50,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentSearchL
         setContentView(R.layout.activity_main);
 
         fm = getSupportFragmentManager();
-        nearMeButton = (Button) findViewById(R.id.nearMeButton);
-        animateOnMap = (Button) findViewById(R.id.animateOnMap);
+        Button nearMeButton = (Button) findViewById(R.id.nearMeButton);
+        Button animateOnMap = (Button) findViewById(R.id.animateOnMap);
 
         nearbyList = new ArrayList<>();
         checkForPermission();
@@ -95,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentSearchL
         animateOnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nearbyList.size() > 0) {
+                if(nearbyList.size() > 1) {
 
                     Bundle bundle = new Bundle();
                     bundle.putParcelableArrayList("animate_list", (ArrayList<Nearby>) nearbyList);
@@ -145,9 +143,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentSearchL
                     if(grantResults[0] == PackageManager.PERMISSION_GRANTED ){
                         fetchLocation = FetchLocation.getInstance(getBaseContext());
                     }
-
                 }
-                return;
             }
         }
     }
