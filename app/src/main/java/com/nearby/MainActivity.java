@@ -83,10 +83,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentSearchL
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getBaseContext(),"Please enter landmark.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(),"No nearby location found.",Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
 
@@ -103,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentSearchL
                     startActivity(intent);
 
                 }else{
-                    Toast.makeText(getBaseContext(),"No route found",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(),"Please enter more than two route.",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -168,7 +166,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentSearchL
             ft2.add(R.id.listFragment,itemFragment);
             ft2.commit();
             itemFragment.getList(nearbyList);
-
         }
     }
 
