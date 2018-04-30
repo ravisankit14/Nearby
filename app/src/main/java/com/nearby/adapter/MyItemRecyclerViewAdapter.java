@@ -53,8 +53,12 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mValues.remove(position);
-                notifyItemRemoved(position);
+                try{
+                    mValues.remove(position);
+                    notifyItemRemoved(position);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
 
                 if(mItemListListner != null){
                     //mItemListListner.onFragmentItem(position);
