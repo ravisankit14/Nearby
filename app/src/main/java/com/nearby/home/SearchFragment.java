@@ -126,7 +126,7 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemClickL
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             String location = String.valueOf(fetchLocation.getLatitude() +","+ fetchLocation.getLongitude());
-            if(s.length() > 1){
+            if(s.length() > 4){
                 searchApi(s.toString(),location);
                 searchList.setVisibility(View.VISIBLE);
             }else{
