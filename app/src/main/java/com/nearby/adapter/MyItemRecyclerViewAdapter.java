@@ -3,6 +3,7 @@ package com.nearby.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,12 +54,9 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                    mValues.remove(position);
-                    notifyItemRemoved(position);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+
+                mValues.remove(holder.mItem);
+                notifyItemRemoved(position);
 
                 if(mItemListListner != null){
                     //mItemListListner.onFragmentItem(position);
@@ -70,16 +68,16 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public int getItemCount() {
 
-        if(mFlag.equals("1") && mValues.size() > 0){
+        if(mFlag.equals("1") && mValues.size() > 0 && mValues.size() < 3){
             return 2;
 
-        }else if(mFlag.equals("0") && mValues.size() <= 10){
-            return mValues.size();
         }else if(mFlag.equals("0") && mValues.size() > 10){
-            Toast.makeText(mContext,"Please delete",Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext,"Please delete some items.",Toast.LENGTH_SHORT).show();
             return mValues.size() - 1;
+        }else {
+            return mValues.size();
         }
-        return 0;
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
