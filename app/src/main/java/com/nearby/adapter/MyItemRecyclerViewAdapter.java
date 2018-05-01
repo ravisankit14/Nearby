@@ -72,7 +72,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             return 2;
 
         }else if(mFlag.equals("0") && mValues.size() > 10){
-            Toast.makeText(mContext,"Please delete some items.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext,"Please delete some item.",Toast.LENGTH_SHORT).show();
             return mValues.size() - 1;
         }else {
             return mValues.size();
