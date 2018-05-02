@@ -171,6 +171,5 @@ public class MainActivity extends AppCompatActivity implements OnFragmentSearchL
 
     @Override
     public void onFragmentItem(int position) {
-        nearbyList.remove(position);
     }
 }
