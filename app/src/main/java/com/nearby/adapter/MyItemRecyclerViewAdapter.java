@@ -68,16 +68,16 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public int getItemCount() {
 
-        if(mFlag.equals("1") && mValues.size() > 0 && mValues.size() < 3){
+        if(mFlag.equals("1") && mValues.size() > 0){
             return 2;
 
-        }else if(mFlag.equals("0") && mValues.size() > 10){
-            Toast.makeText(mContext,"Please delete some item.",Toast.LENGTH_SHORT).show();
-            return mValues.size() - 1;
-        }else {
+        }else if(mFlag.equals("0") && mValues.size() <= 10){
             return mValues.size();
+        }else if(mFlag.equals("0") && mValues.size() > 10){
+            Toast.makeText(mContext,"Please delete",Toast.LENGTH_SHORT).show();
+            return mValues.size() - 1;
         }
-
+        return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
